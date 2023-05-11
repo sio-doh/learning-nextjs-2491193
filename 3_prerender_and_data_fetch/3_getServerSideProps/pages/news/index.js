@@ -1,0 +1,34 @@
+import Layout from "@/components/Layout";
+import { search } from "../api"; 
+
+export default function News({ results }) {
+    return (
+        <Layout>
+            <h1>Search</h1> 
+            <ul>
+                {results.map(result => {
+                    return (
+                        <li key={result.uri}>
+                            <a href={result.url} target="_blank" rel="noopener norefferer"> 
+                                {result.title}
+                            </a>
+                        </li>
+                    )
+                })}
+            </ul>
+        </Layout>
+    )
+} 
+
+const API_KEY = process.env.API_ACCESS_KEY; 
+export async function getStaticProps() { 
+    const URL = `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${API_KEY}`;
+    const response = await fetch(URL); 
+    const data = await response.json();
+    console.log(data);
+    return {
+        props: {
+            results: data.results
+        }
+    }
+}
