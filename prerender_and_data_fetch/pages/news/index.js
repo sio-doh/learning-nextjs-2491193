@@ -1,9 +1,20 @@
 import Layout from "@/components/Layout";
 
-export default function News({results}) {
+export default function News({ results }) {
     return (
         <Layout>
             <h1>Top Stories</h1> 
+            <ul>
+                {results.map(result => {
+                    return (
+                        <li key={result.uri}>
+                            <a href={result.url} target="_blank" rel="noopener norefferer"> 
+                                {result.title}
+                            </a>
+                        </li>
+                    )
+                })}
+            </ul>
         </Layout>
     )
 }
