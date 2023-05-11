@@ -4,7 +4,7 @@ import { search } from "../api";
 export default function News({ results }) {
     return (
         <Layout>
-            <h1>Search</h1> 
+            <h1>Top Stories</h1> 
             <ul>
                 {results.map(result => {
                     return (

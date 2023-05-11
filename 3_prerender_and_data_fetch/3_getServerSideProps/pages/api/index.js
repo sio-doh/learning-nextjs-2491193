@@ -8,7 +8,7 @@ export async function handler(url) {
 export async function search(url) {
   const response = await fetch(url);
   const data = await response.json();
-  const docs = data.response.docs ?? [];
+  const docs = data.response?.docs ?? [];
   const results = docs.map(doc => {
     return {
       title: doc?.headline?.main, 
