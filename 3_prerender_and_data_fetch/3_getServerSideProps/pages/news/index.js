@@ -1,10 +1,10 @@
 import Layout from "@/components/Layout";
 import { search } from "../api"; 
 
-export default function News({ results }) {
+export default function News({ results, query }) {
     return (
         <Layout>
-            <h1>Top Stories</h1> 
+            <h1>Top Stories: {query}</h1> 
             <ul>
                 {results.map(result => {
                     return (
@@ -20,9 +20,9 @@ export default function News({ results }) {
     )
 } 
 
-const API_KEY = process.env.API_ACCESS_KEY; 
+const TOP_STORIES_API_KEY = process.env.TOP_STORIES_API_KEY;  
 export async function getStaticProps() { 
-    const URL = `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${API_KEY}`;
+    const URL = `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${TOP_STORIES_API_KEY}`;
     const response = await fetch(URL); 
     const data = await response.json();
     console.log(data);
