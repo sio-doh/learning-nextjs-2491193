@@ -17,10 +17,10 @@ export default function Layout({ children }) {
     ];
     return (
         <>
-            {links.map(link => {
-                return <Link href={link.path}><span>{link.title}{" "}</span></Link>;
+            {links.map((link, index) => {
+                return <Link key={index} href={link.path}><span>{link.title}{" "}</span></Link>;
             })}
             {children}
         </>
-    )
+    );
 }

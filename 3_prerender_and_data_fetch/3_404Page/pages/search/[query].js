@@ -13,11 +13,11 @@ export default function News({ results, query }) {
                                 {result.title}
                             </a>
                         </li>
-                    )
+                    );
                 })}
             </ul>
         </Layout>
-    )
+    );
 } 
 
 const API_KEY = process.env.API_KEY;  
