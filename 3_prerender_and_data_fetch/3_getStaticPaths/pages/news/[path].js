@@ -15,7 +15,7 @@ export default function News({ results, title }) {
                 <ul>
                     {results?.map(result => {
                         return (
-                            <li>
+                            <li key={result.url}>
                                 <span>
                                     <a href={result.url} target="_blank" rel="noopener norefferer"> 
                                         {result.title}
