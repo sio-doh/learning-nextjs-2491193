@@ -20,9 +20,9 @@ export default function News({ results, query }) {
     )
 }
 
-const ARTICLES_API_KEY = process.env.ARTICLES_API_KEY; 
+const API_KEY = process.env.API_KEY; 
 export async function getServerSideProps({ params }) { 
-    const URL = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${params.query}&api-key=${ARTICLES_API_KEY}`; 
+    const URL = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${params.query}&api-key=${API_KEY}`; 
     const results = await search(URL);
     return {
         props: {

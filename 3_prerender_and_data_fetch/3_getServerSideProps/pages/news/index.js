@@ -20,9 +20,9 @@ export default function News({ results, query }) {
     )
 } 
 
-const TOP_STORIES_API_KEY = process.env.TOP_STORIES_API_KEY;  
+const API_KEY = process.env.API_KEY;  
 export async function getStaticProps() { 
-    const URL = `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${TOP_STORIES_API_KEY}`;
+    const URL = `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${API_KEY}`;
     const response = await fetch(URL); 
     const data = await response.json();
     console.log(data);
