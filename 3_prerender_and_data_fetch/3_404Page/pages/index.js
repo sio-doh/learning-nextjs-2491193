@@ -10,12 +10,12 @@ export default function Home() {
     {
       title: "Top Stories", 
       desc: "Read articles currently on the homepage of the New York Times", 
-      path: "/top-stories"
+      path: "top-stories"
     }, 
     {
       title: "Popular", 
       desc: "Read the most popular articles on the New York Times", 
-      path: "/popular"
+      path: "popular"
     }
   ];
 
