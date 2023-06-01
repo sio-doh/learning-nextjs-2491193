@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Layout from "../../components/Layout";
 import List from "../../components/List";
-import { results as apiResults } from "../api"; 
+import { results as apiResults } from "../api/index"; 
 import Link from "next/link";
 
 export default function Posts(props) {
@@ -21,7 +21,7 @@ const API_KEY = process.env.API_KEY;
 
 export async function getStaticPaths() {
     const data = await apiResults(`https://api.nytimes.com/svc/news/v3/content/section-list.json?api-key=${API_KEY}`);
-    
+
     const paths = data.results ? data.results.map((result) => ({
         params: { section: result.section }
     })) : [];
@@ -34,12 +34,11 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
     const data = await apiResults(`https://api.nytimes.com/svc/news/v3/content/nyt/${params.section}.json?api-key=${API_KEY}`);
-    
+
     return {
         props: {
-            results: data, 
+            results: data || [], 
             title:  "Section: " + params.section,
         }
     }
 }
-

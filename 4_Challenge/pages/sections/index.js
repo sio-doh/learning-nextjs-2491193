@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import Layout from "../../components/Layout";
-import { handler } from "../api";
+import { handler } from "../api"; 
 
 export default function Sections({ results, title }) {
     return (
@@ -14,13 +14,13 @@ export default function Sections({ results, title }) {
             <main>
                 <h1>{title}</h1>
                 <ul>
-                    {results?.map(result => {
+                    {results?.map((result) => {
                         return (
                             <>
-                            <Link href={`sections/${result.section}`}>
-                                - <span>{result.display_name}</span>
-                            </Link>
-                            <br />
+                                <Link href={`sections/${result.section}`}>
+                                    - <span>{result.display_name}</span>
+                                </Link>
+                                <br />
                             </>
                         )
                     })}
@@ -35,7 +35,8 @@ export async function getStaticProps({ params }) {
     return {
         props: {
             results : await handler(`https://api.nytimes.com/svc/news/v3/content/section-list.json?api-key=${API_KEY}`), 
-            title: "Sections"
+            title: "Sections",
         }
     }
 }
+
